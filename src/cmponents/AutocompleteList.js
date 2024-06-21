@@ -1,7 +1,8 @@
 import React from 'react';
 
-const AutocompleteList = ({ options }) => {
+const AutocompleteList = ({ options, selectedIndex }) => {
   const optionKeys = Object.keys(options);
+  let index = 0;
 
   return (
     <ul className="border border-gray-300 mt-1 max-h-60 overflow-auto">
@@ -11,9 +12,13 @@ const AutocompleteList = ({ options }) => {
         optionKeys.map((key) => (
           <div key={key}>
             <li className="p-2 bg-gray-200 font-bold">{key}</li>
-            {Array.isArray(options[key]) && options[key].map((option, index) => (
-              <li key={index} className="p-2 hover:bg-gray-200 cursor-pointer">
+            {Array.isArray(options[key]) && options[key].map((option) => (
+              <li
+                key={option}
+                className={`p-2 cursor-pointer ${index === selectedIndex ? 'bg-gray-200' : ''}`}
+              >
                 {option}
+                {index++}
               </li>
             ))}
           </div>
