@@ -22,17 +22,20 @@ const Autocomplete = ({ options }) => {
     }
   };
 
+
+  const handleSelectItem = (item) => {
+    setQuery(item);
+    setShowOptions(false);
+    setSelectedIndex(-1);
+  };
+
+
   const handleFocus = (e) => {
     setShowOptions(true);
   };
 
-  useEffect(() => {
-    if (query === '') {
-      setShowOptions(false);
-    } else {
-      setShowOptions(true);
-    }
-  }, [query]);
+
+
 
   return (
     <div className="relative w-full max-w-xs mx-auto">
@@ -46,6 +49,7 @@ const Autocomplete = ({ options }) => {
         <AutocompleteList
           options={groupedOptions}
           selectedIndex={selectedIndex}
+          onSelectItem={handleSelectItem}
         />
       )}
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Autocomplete from './cmponents/Autocomplete';
+import Autocomplete from './components/Autocomplete';
 
 const options = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape'];
 

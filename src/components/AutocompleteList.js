@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AutocompleteList = ({ options, selectedIndex }) => {
+const AutocompleteList = ({ options, selectedIndex, onSelectItem }) => {
   const optionKeys = Object.keys(options);
   let index = 0;
 
@@ -12,15 +12,21 @@ const AutocompleteList = ({ options, selectedIndex }) => {
         optionKeys.map((key) => (
           <div key={key}>
             <li className="p-2 bg-gray-200 font-bold">{key}</li>
-            {Array.isArray(options[key]) && options[key].map((option) => (
+            {Array.isArray(options[key]) && options[key].map((option) => {
+             
+             const expression =  (
               <li
                 key={option}
+                onClick={() => onSelectItem(option)}
                 className={`p-2 cursor-pointer ${index === selectedIndex ? 'bg-gray-200' : ''}`}
               >
                 {option}
-                {index++}
               </li>
-            ))}
+            )
+
+             index ++;
+             return expression;
+            })}
           </div>
         ))
       )}
